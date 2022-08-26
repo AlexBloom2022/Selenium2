@@ -28,13 +28,13 @@ public class SeleniumHW {
     }
 
     @Test
-    public void ShouldSendForm() {
+    public void shouldSendForm() {
         driver.get("http://localhost:7777");
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Юлия Цой-Цой");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79018765647");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.tagName("button")).click();
-        String actual = driver.findElement(By.className("paragraph")).getText().trim();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         Assertions.assertEquals(expected, actual);
     }
